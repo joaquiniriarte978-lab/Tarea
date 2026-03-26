@@ -1,8 +1,6 @@
 import org.example.Producto;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class Envolvente {
@@ -23,7 +21,16 @@ public class Envolvente {
 
     }
 
-    public void masCaroXcategoria(){
-
+    public Map<String,Producto> masCaroXcategoria(){
+        Map<String, Producto> productosMasCarosPorCategoria =
+                productos.stream()
+                        .collect(Collectors.groupingBy(
+                                Producto::getCategoria,
+                                Collectors.collectingAndThen(
+                                        Collectors.maxBy(Comparator.comparingDouble(Producto::getPrecio)),
+                                        Optional::get
+                                )
+                        ));
+        return productosMasCarosPorCategoria;
     }
 }
