@@ -1,11 +1,15 @@
 import org.example.Producto;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Envolvente {
-    private ArrayList<Producto> productos;
+    private List<Producto> productos;
 
-    public Envolvente(ArrayList<Producto> electronica) {
-        this.productos = new ArrayList<>();
+    public Envolvente() {
+        this.productos = Producto.cargarProductos();
+    }
+    public void masCaroXcategoria(){
+
     }
 }
